@@ -8,7 +8,24 @@ module.exports = function (app) {
   const mongooseClient = app.get('mongooseClient');
   const { Schema } = mongooseClient;
   const contact = new Schema({
-    text: { type: String, required: true },
+    name: {
+      first: {
+        type: String,
+        required: [true, 'Firstname is required']
+      },
+      last: {
+        type: String,
+        required: false
+      }
+    },
+    email: {
+      type: mongooseClient.SchemaTypes.Email,
+      required: [true, 'Email is required']
+    },
+    phone: {
+      type: String,
+      required: [true, 'Phone is required']
+    },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
   });
