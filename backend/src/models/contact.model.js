@@ -25,8 +25,10 @@ module.exports = function (app) {
     phone: {
       type: String,
       required: [true, 'Phone is required'],
-      validate: phoneNumber => /^\+(?:[0-9] ?){6, 14}[0-9]$/.test(phoneNumber),
-      message: '{VALUE} is not a valid international phone number!'
+      validate: {
+        validator: phoneNumber => /^\+(?:[0-9] ?){6,14}[0-9]$/.test(phoneNumber),
+        message: '{VALUE} is not a valid international phone number!'
+      }
     },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }

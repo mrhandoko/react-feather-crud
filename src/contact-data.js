@@ -8,11 +8,13 @@ export const contacts = [
     phone: "555",
     email: "john@gmail.com"
   },
-  _id: 2,
-  name: {
-    first: "Bruce",
-    last: "Wayne"
-  },
-  phone: "777",
-  email: "bruce.wayne@gmail.com"
+  {
+    _id: 2,
+    name: {
+      first: "Bruce",
+      last: "Wayne"
+    },
+    phone: "777",
+    email: "bruce.wayne@gmail.com"
+  }
 ];
