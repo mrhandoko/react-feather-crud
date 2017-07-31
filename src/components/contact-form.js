@@ -42,13 +42,20 @@ class ContactForm extends Component {
     </Form.Field>
   )
 
+  componentWillReceiveProps = nextProps => {
+    const { contact } = nextProps;
+    if(contact._id !==  this.props.contact._id) {
+      this.props.initialize(contact)
+    }
+  }
+
   render() {
     const { handleSubmit, pristine, submitting, loading } = this.props;
 
     return (
       <Grid centered columns={2}>
         <Grid.Column>
-          <h1 style={{marginTop:"1em"}}>Add New Contact</h1>
+          <h1 style={{marginTop:"1em"}}>{this.props.contact_id ? 'Edit Contact' : 'Add New Contact'}</h1>
           <Form onSubmit={handleSubmit} loading={loading}>
             <Form.Group widths='equal'>
               <Field name="name.first" type="text" component={this.renderField} label="First Name"/>

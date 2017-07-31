@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Button, Icon } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 const ContactCard = ({ contact, deleteContact }) =>
   <Card>
@@ -14,9 +15,9 @@ const ContactCard = ({ contact, deleteContact }) =>
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
-      <div class="ui two buttons">
-        <Button basic color="green">Edit</Button>
-        <Button basic color="red">Delete</Button>
+      <div className="ui two buttons">
+        <Link to={`/contacts/edit/${contact._id}`} className="ui basic button green">Edit</Link>
+        <Button basic color="red" onClick={() => deleteContact(contact._id)}>Delete</Button>
       </div>
     </Card.Content>
   </Card>
